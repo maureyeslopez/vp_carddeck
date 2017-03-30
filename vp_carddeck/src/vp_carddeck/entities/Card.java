@@ -71,4 +71,9 @@ public class Card implements ICard {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return rank.toString() + " " + suit.toString();
+	}
+	
 }

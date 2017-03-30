@@ -53,4 +53,9 @@ public class Suit implements ISuit {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+
 }
