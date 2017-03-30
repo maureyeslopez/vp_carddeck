@@ -8,7 +8,7 @@ import vp_carddeck.entities.IRank;
 
 public class FrenchCardFace implements IFace {
 
-	public static final char[] frenchFaces = new char[]{ 'J', 'Q', 'K', 'A' };
+	public static final char[] FRENCH_FACES = new char[]{ 'J', 'Q', 'K', 'A' };
 	
 	private char letter;
 	
@@ -22,8 +22,8 @@ public class FrenchCardFace implements IFace {
 		if (rank instanceof IPip) {
 			return 1;
 		} else if (rank instanceof IFace) {
-			int thisFacePosition = ArrayUtils.indexOf(frenchFaces, this.getLetter());
-			int comparedFacePosition = ArrayUtils.indexOf(frenchFaces, ((IFace) rank).getLetter());
+			int thisFacePosition = ArrayUtils.indexOf(FRENCH_FACES, this.getLetter());
+			int comparedFacePosition = ArrayUtils.indexOf(FRENCH_FACES, ((IFace) rank).getLetter());
 			return Integer.compare(thisFacePosition, comparedFacePosition);
 		} else {
 			return 0;

@@ -1,51 +1,66 @@
 package vp_carddeck.entities.french;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
-import vp_carddeck.entities.ICard;
+import vp_carddeck.common.DeckFunctions;
 import vp_carddeck.entities.IDeck;
 
-public class FrenchDeck implements IDeck {
+/**
+ * Specification of {@link IDeck} for {@link FrenchCard}
+ * 
+ * @author maureyes
+ *
+ */
+public class FrenchDeck implements IDeck<FrenchCard> {
 
-	// First position is top, last one y bottom
-	private List<ICard> cards;
-	
+	private List<FrenchCard> cards;
+	private DeckFunctions<FrenchCard> deckUtils;
+
 	public FrenchDeck() {
 		super();
-		this.cards = new ArrayList<ICard>();
+		this.deckUtils = new DeckFunctions<FrenchCard>();
+		this.cards = new ArrayList<FrenchCard>();
 	}
-	
+
 	@Override
-	public List<ICard> getCards() {
+	public List<FrenchCard> getCards() {
 		return cards;
 	}
 
 	@Override
-	public void putCardOnTop(ICard card) {
-		cards.add(0, card);
+	public void putCard(FrenchCard card) {
+		deckUtils.putCard(card, cards);
 	}
 
 	@Override
-	public void putCardOnBottom(ICard card) {
-		cards.add(card);
+	public void putCardOnTop(FrenchCard card) {
+		deckUtils.putCardOnTop(card, cards);
 	}
 
 	@Override
-	public ICard getCardOnTop() {
-		return cards.remove(0);
+	public void putCardOnBottom(FrenchCard card) {
+		deckUtils.putCardOnBottom(card, cards);
 	}
 
 	@Override
-	public ICard getCardOnBottom() {
-		return cards.remove(cards.size() - 1);
+	public FrenchCard retrieveRandomCard() {
+		return deckUtils.retrieveRandomCard(cards);
+	}
+
+	@Override
+	public FrenchCard retrieveCardOnTop() {
+		return deckUtils.retrieveCardOnTop(cards);
+	}
+
+	@Override
+	public FrenchCard retrieveCardOnBottom() {
+		return deckUtils.retrieveCardOnBottom(cards);
 	}
 
 	@Override
 	public void shuffle() {
-		Collections.shuffle(cards, new Random());
+		deckUtils.shuffle(cards);
 	}
-
+	
 }
