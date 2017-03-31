@@ -1,6 +1,7 @@
 package vp_carddeck.entities.spanish;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import vp_carddeck.common.DeckFunctions;
@@ -63,6 +64,11 @@ public class SpanishDeck implements IDeck<SpanishCard> {
 	@Override
 	public void shuffle() throws NoMoreCardsException {
 		deckUtils.shuffle(cards);
+	}
+	
+	@Override
+	public void sort(Comparator<SpanishCard> criteria) throws NoMoreCardsException {
+		deckUtils.sort(cards, criteria);
 	}
 	
 }

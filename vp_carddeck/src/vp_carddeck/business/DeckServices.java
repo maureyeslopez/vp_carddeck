@@ -29,4 +29,8 @@ public interface DeckServices<T extends ICard> {
 
 	public void shuffle() throws NoDeckException, NoMoreCardsException;
 
+	public void sortByRank() throws NoDeckException, NoMoreCardsException;
+
+	public void sortBySuit() throws NoDeckException, NoMoreCardsException;
+
 }

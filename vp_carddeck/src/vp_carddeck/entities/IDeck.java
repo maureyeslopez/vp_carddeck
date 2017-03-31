@@ -1,5 +1,6 @@
 package vp_carddeck.entities;
 
+import java.util.Comparator;
 import java.util.List;
 
 import vp_carddeck.common.exceptions.CardRepeatedException;
@@ -66,5 +67,12 @@ public interface IDeck<T extends ICard> {
 	 * @throws NoMoreCardsException 
 	 */
 	public void shuffle() throws NoMoreCardsException;
+	
+	/**
+	 * Sorts the deck
+	 * @param criteria
+	 * @throws NoMoreCardsException 
+	 */
+	public void sort(Comparator<T> criteria) throws NoMoreCardsException;
 	
 }

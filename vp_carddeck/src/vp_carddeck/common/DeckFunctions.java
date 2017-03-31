@@ -1,6 +1,7 @@
 package vp_carddeck.common;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -70,6 +71,14 @@ public class DeckFunctions<T extends ICard> {
 	public void shuffle(List<T> deck) throws NoMoreCardsException {
 		if (deck.size() > 0) {
 			Collections.shuffle(deck, ThreadLocalRandom.current());
+		} else {
+			throw new NoMoreCardsException();
+		}
+	}
+	
+	public void sort(List<T> deck, Comparator<T> criteria) throws NoMoreCardsException {
+		if (deck.size() > 0) {
+			Collections.sort(deck, criteria);
 		} else {
 			throw new NoMoreCardsException();
 		}

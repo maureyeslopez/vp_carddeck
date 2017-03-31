@@ -1,8 +1,9 @@
 package vp_carddeck.business;
 
+import java.util.Comparator;
+
 import javax.ejb.Lock;
 import javax.ejb.LockType;
-import javax.ejb.Startup;
 import javax.ejb.Stateful;
 
 import vp_carddeck.common.exceptions.CardRepeatedException;
@@ -98,6 +99,37 @@ public class DeckServicesEJB implements DeckServices<ICard> {
 	public void shuffle() throws NoDeckException, NoMoreCardsException {
 		if (deck != null) {
 			deck.shuffle();
+		} else {
+			throw new NoDeckException();
+		}
+	}
+	
+	@Override
+	@Lock(LockType.WRITE)
+	public void sortByRank() throws NoDeckException, NoMoreCardsException {
+		if (deck != null) {
+			deck.sort(null);
+		} else {
+			throw new NoDeckException();
+		}
+	}
+	
+	@Override
+	@Lock(LockType.WRITE)
+	public void sortBySuit() throws NoDeckException, NoMoreCardsException {
+		if (deck != null) {
+			deck.sort(new Comparator<ICard>() {
+				
+				@Override
+				public int compare(ICard c1, ICard c2) {
+					int comparison = c1.getSuit().compareTo(c2.getSuit());
+					if (comparison == 0) {
+						comparison = c1.getRank().compareTo(c2.getRank());
+					}
+					
+					return comparison;
+				}
+			});
 		} else {
 			throw new NoDeckException();
 		}

@@ -129,5 +129,29 @@ public class FrenchDeckREST {
 			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
 		}
 	}
+	
+	@PUT
+	@Path("/sort/rank")
+	@Produces("application/json" + ";charset=utf-8")
+	public Response sortByRank() {
+		try {
+			frenchDeckServices.sortByRank();
+			return buildResponse("Deck sorted by rank", HTTP_SUCCESS_200);
+		} catch (NoDeckException | NoMoreCardsException e) {
+			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
+		}
+	}
+
+	@PUT
+	@Path("/sort/suit")
+	@Produces("application/json" + ";charset=utf-8")
+	public Response sortBySuit() {
+		try {
+			frenchDeckServices.sortBySuit();
+			return buildResponse("Deck sorted by suit", HTTP_SUCCESS_200);
+		} catch (NoDeckException | NoMoreCardsException e) {
+			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
+		}
+	}
 
 }
