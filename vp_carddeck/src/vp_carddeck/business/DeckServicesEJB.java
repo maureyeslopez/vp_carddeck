@@ -2,8 +2,8 @@ package vp_carddeck.business;
 
 import javax.ejb.Lock;
 import javax.ejb.LockType;
-import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.ejb.Stateful;
 
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoDeckException;
@@ -17,8 +17,7 @@ import vp_carddeck.entities.IDeck;
  * @author maureyes
  *
  */
-@Startup
-@Singleton
+@Stateful
 public class DeckServicesEJB implements DeckServices<ICard> {
 
 	private IDeck<ICard> deck;
