@@ -7,6 +7,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import rest.FrenchDeckREST;
+import rest.SpanishDeckREST;
 
 @ApplicationPath("/")
 public class RestApplication extends Application {
@@ -20,6 +21,7 @@ public class RestApplication extends Application {
 
 	private void addRestResourceClasses(Set<Class<?>> resources) {
 		resources.add(FrenchDeckREST.class);
+		resources.add(SpanishDeckREST.class);
 	}
 
 	@Override
