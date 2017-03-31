@@ -2,6 +2,9 @@ package vp_carddeck.business;
 
 import javax.ejb.Local;
 
+import vp_carddeck.common.exceptions.CardRepeatedException;
+import vp_carddeck.common.exceptions.NoDeckException;
+import vp_carddeck.common.exceptions.NoMoreCardsException;
 import vp_carddeck.entities.ICard;
 import vp_carddeck.entities.IDeck;
 
@@ -10,20 +13,20 @@ public interface DeckServices<T extends ICard> {
 
 	public void createDeck(DeckFactory<T> factory);
 	
-	public IDeck<T> initDeck();
+	public IDeck<T> getDeck() throws NoDeckException;
 	
 	public void deleteDeck();
 	
-	public ICard getRandomCard();
+	public ICard getRandomCard() throws NoDeckException, NoMoreCardsException;
 	
-	public ICard getCardOnTop();
+	public ICard getCardOnTop() throws NoDeckException, NoMoreCardsException;
 	
-	public ICard getCardOnBottom();
+	public ICard getCardOnBottom() throws NoDeckException, NoMoreCardsException;
 	
-	public void putCardOnTop(T card);
+	public void putCardOnTop(T card) throws NoDeckException, CardRepeatedException;
 	
-	public void putCardOnBottom(T card);
+	public void putCardOnBottom(T card) throws NoDeckException, CardRepeatedException;
 
-	public void shuffle();
-	
+	public void shuffle() throws NoDeckException, NoMoreCardsException;
+
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vp_carddeck.common.DeckFunctions;
+import vp_carddeck.common.exceptions.CardRepeatedException;
+import vp_carddeck.common.exceptions.NoMoreCardsException;
 import vp_carddeck.entities.IDeck;
 
 /**
@@ -29,37 +31,37 @@ public class FrenchDeck implements IDeck<FrenchCard> {
 	}
 
 	@Override
-	public void putCard(FrenchCard card) {
+	public void putCard(FrenchCard card) throws CardRepeatedException {
 		deckUtils.putCard(card, cards);
 	}
 
 	@Override
-	public void putCardOnTop(FrenchCard card) {
+	public void putCardOnTop(FrenchCard card) throws CardRepeatedException {
 		deckUtils.putCardOnTop(card, cards);
 	}
 
 	@Override
-	public void putCardOnBottom(FrenchCard card) {
+	public void putCardOnBottom(FrenchCard card) throws CardRepeatedException {
 		deckUtils.putCardOnBottom(card, cards);
 	}
 
 	@Override
-	public FrenchCard retrieveRandomCard() {
+	public FrenchCard retrieveRandomCard() throws NoMoreCardsException {
 		return deckUtils.retrieveRandomCard(cards);
 	}
 
 	@Override
-	public FrenchCard retrieveCardOnTop() {
+	public FrenchCard retrieveCardOnTop() throws NoMoreCardsException {
 		return deckUtils.retrieveCardOnTop(cards);
 	}
 
 	@Override
-	public FrenchCard retrieveCardOnBottom() {
+	public FrenchCard retrieveCardOnBottom() throws NoMoreCardsException {
 		return deckUtils.retrieveCardOnBottom(cards);
 	}
 
 	@Override
-	public void shuffle() {
+	public void shuffle() throws NoMoreCardsException {
 		deckUtils.shuffle(cards);
 	}
 	
