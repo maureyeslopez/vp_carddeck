@@ -11,6 +11,10 @@ public class Card implements ICard {
 	private ISuit suit;
 	private IRank rank;
 	
+	public Card() {
+		super();
+	}
+	
 	public Card(ISuit suit, IRank rank) {
 		super();
 		this.suit = suit;

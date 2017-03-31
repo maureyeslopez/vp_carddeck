@@ -13,6 +13,10 @@ import vp_carddeck.entities.ISuit;
  */
 public class FrenchCard extends Card {
 
+	public FrenchCard() {
+		super();
+	}
+	
 	public FrenchCard(ISuit suit, IRank rank) {
 		super(suit, rank);
 	}
