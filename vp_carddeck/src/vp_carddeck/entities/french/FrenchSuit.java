@@ -12,6 +12,10 @@ public class FrenchSuit extends Suit {
 	
 	public final static String[] FRENCH_SUITS = new String[]{ HEARTS, CLUBS, DIAMONDS, SPADES };
 	
+	public FrenchSuit() {
+		super();
+	}
+	
 	public FrenchSuit(String name) {
 		super(name);
 	}

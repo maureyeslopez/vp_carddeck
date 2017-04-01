@@ -6,17 +6,21 @@ import vp_carddeck.entities.IFace;
 import vp_carddeck.entities.IPip;
 import vp_carddeck.entities.IRank;
 
-public class FrenchCardFace implements IFace {
+public class FrenchFaceCard implements IFace {
 
-	public static final char[] FRENCH_FACES = new char[]{ 'J', 'Q', 'K', 'A' };
-	
+	public static final char[] FRENCH_FACES = new char[] { 'J', 'Q', 'K', 'A' };
+
 	private char letter;
-	
-	public FrenchCardFace(char letter) {
+
+	public FrenchFaceCard() {
+		super();
+	}
+
+	public FrenchFaceCard(char letter) {
 		super();
 		this.letter = letter;
 	}
-	
+
 	@Override
 	public int compareTo(IRank rank) {
 		if (rank instanceof IPip) {
@@ -51,7 +55,7 @@ public class FrenchCardFace implements IFace {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FrenchCardFace other = (FrenchCardFace) obj;
+		FrenchFaceCard other = (FrenchFaceCard) obj;
 		if (letter != other.letter)
 			return false;
 		return true;
@@ -61,5 +65,5 @@ public class FrenchCardFace implements IFace {
 	public String toString() {
 		return String.valueOf(letter);
 	}
-	
+
 }

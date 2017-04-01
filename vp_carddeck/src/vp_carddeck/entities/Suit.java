@@ -9,6 +9,9 @@ package vp_carddeck.entities;
 public class Suit implements ISuit {
 
 	private String name;
+	public Suit() {
+		super();
+	}
 	
 	public Suit(String name) {
 		super();

@@ -8,6 +8,10 @@ public class FrenchPip implements IPip {
 
 	private int number;
 	
+	public FrenchPip() {
+		super();
+	}
+	
 	public FrenchPip(int number) {
 		super();
 		this.number = number;

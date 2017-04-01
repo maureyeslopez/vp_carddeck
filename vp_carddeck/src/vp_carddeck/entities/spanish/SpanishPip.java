@@ -13,6 +13,10 @@ public class SpanishPip implements IPip {
 
 	private int number;
 
+	public SpanishPip() {
+		super();
+	}
+
 	public SpanishPip(int number) {
 		super();
 		this.number = number;

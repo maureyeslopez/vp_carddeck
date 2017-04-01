@@ -6,9 +6,6 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import rest.FrenchDeckREST;
-import rest.SpanishDeckREST;
-
 @ApplicationPath("/")
 public class RestApplication extends Application {
 

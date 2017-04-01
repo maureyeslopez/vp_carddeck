@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.entities.IDeck;
 import vp_carddeck.entities.french.FrenchCard;
-import vp_carddeck.entities.french.FrenchCardFace;
+import vp_carddeck.entities.french.FrenchFaceCard;
 import vp_carddeck.entities.french.FrenchDeck;
 import vp_carddeck.entities.french.FrenchPip;
 import vp_carddeck.entities.french.FrenchSuit;
@@ -32,8 +32,8 @@ public class FrenchDeckFactory implements DeckFactory<FrenchCard> {
 					throw new RuntimeException("Error on deck creation");
 				}
 			}
-			for (char faceName : FrenchCardFace.FRENCH_FACES) {
-				FrenchCardFace face = new FrenchCardFace(faceName);
+			for (char faceName : FrenchFaceCard.FRENCH_FACES) {
+				FrenchFaceCard face = new FrenchFaceCard(faceName);
 				FrenchCard card = new FrenchCard(suit, face);
 				try {
 					frenchDeck.putCard(card);

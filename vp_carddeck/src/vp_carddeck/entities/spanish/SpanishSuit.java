@@ -11,6 +11,10 @@ public class SpanishSuit extends Suit {
 	
 	public final static String[] SPANISH_SUITS = new String[]{ BASTO, ORO, COPA, ESPADA };
 	
+	public SpanishSuit() {
+		super();
+	}
+	
 	public SpanishSuit(String name) {
 		super(name);
 	}
