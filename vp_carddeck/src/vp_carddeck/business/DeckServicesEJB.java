@@ -69,7 +69,7 @@ public class DeckServicesEJB implements DeckServices<ICard> {
 	@Lock(LockType.WRITE)
 	public ICard getCardOnBottom() throws NoDeckException, NoMoreCardsException {
 		if (deck != null) {
-			return deck.retrieveCardOnTop();
+			return deck.retrieveCardOnBottom();
 		} else {
 			throw new NoDeckException();
 		}
