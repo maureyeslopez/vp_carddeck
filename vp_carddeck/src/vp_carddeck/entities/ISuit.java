@@ -10,4 +10,6 @@ public interface ISuit extends Comparable<ISuit> {
 
 	public String getName();
 	
+	public boolean validSuitName(String name);
+	
 }

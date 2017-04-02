@@ -7,6 +7,7 @@ import java.util.List;
 import vp_carddeck.common.DeckFunctions;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.IDeck;
 
 /**
@@ -32,17 +33,18 @@ public class FrenchDeck implements IDeck<FrenchCard> {
 	}
 
 	@Override
-	public void putCard(FrenchCard card) throws CardRepeatedException {
+	public void putCard(FrenchCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCard(card, cards);
+
 	}
 
 	@Override
-	public void putCardOnTop(FrenchCard card) throws CardRepeatedException {
+	public void putCardOnTop(FrenchCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCardOnTop(card, cards);
 	}
 
 	@Override
-	public void putCardOnBottom(FrenchCard card) throws CardRepeatedException {
+	public void putCardOnBottom(FrenchCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCardOnBottom(card, cards);
 	}
 
@@ -70,5 +72,5 @@ public class FrenchDeck implements IDeck<FrenchCard> {
 	public void sort(Comparator<FrenchCard> criteria) throws NoMoreCardsException {
 		deckUtils.sort(cards, criteria);
 	}
-	
+
 }

@@ -5,6 +5,7 @@ import javax.ejb.Local;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoDeckException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.ICard;
 import vp_carddeck.entities.IDeck;
 
@@ -23,9 +24,9 @@ public interface DeckServices<T extends ICard> {
 	
 	public ICard getCardOnBottom() throws NoDeckException, NoMoreCardsException;
 	
-	public void putCardOnTop(T card) throws NoDeckException, CardRepeatedException;
+	public void putCardOnTop(T card) throws NoDeckException, CardRepeatedException, UnrecognizedCardException;
 	
-	public void putCardOnBottom(T card) throws NoDeckException, CardRepeatedException;
+	public void putCardOnBottom(T card) throws NoDeckException, CardRepeatedException, UnrecognizedCardException;
 
 	public void shuffle() throws NoDeckException, NoMoreCardsException;
 

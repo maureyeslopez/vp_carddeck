@@ -1,26 +1,31 @@
 package vp_carddeck.entities.french;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import vp_carddeck.entities.IFace;
 import vp_carddeck.entities.IPip;
 import vp_carddeck.entities.IRank;
 
 public class FrenchPip implements IPip {
 
+	@Min(value = 2)
+	@Max(value = 10)
 	private int number;
-	
+
 	public FrenchPip() {
 		super();
 	}
-	
+
 	public FrenchPip(int number) {
 		super();
 		this.number = number;
 	}
-	
+
 	@Override
 	public int compareTo(IRank rank) {
 		if (rank instanceof IPip) {
-			int comparedRankNumber = ((FrenchPip) rank).getNumber(); 
+			int comparedRankNumber = ((FrenchPip) rank).getNumber();
 			return Integer.compare(this.getNumber(), comparedRankNumber);
 		} else if (rank instanceof IFace) {
 			return -1;

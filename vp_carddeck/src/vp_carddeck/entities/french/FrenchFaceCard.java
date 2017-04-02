@@ -5,11 +5,18 @@ import org.apache.commons.lang3.ArrayUtils;
 import vp_carddeck.entities.IFace;
 import vp_carddeck.entities.IPip;
 import vp_carddeck.entities.IRank;
+import vp_carddeck.entities.validators.In;
 
 public class FrenchFaceCard implements IFace {
 
-	public static final char[] FRENCH_FACES = new char[] { 'J', 'Q', 'K', 'A' };
+	public static final char JACK = 'J';
+	public static final char QUEEN = 'Q';
+	public static final char KING = 'K';
+	public static final char ACE = 'A';
 
+	public static final char[] FRENCH_FACES = new char[] { JACK, QUEEN, KING, ACE };
+
+	@In(values = { JACK, QUEEN, KING, ACE })
 	private char letter;
 
 	public FrenchFaceCard() {

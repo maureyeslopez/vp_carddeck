@@ -1,6 +1,9 @@
 package vp_carddeck.entities.french;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import vp_carddeck.common.CardColor;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.Suit;
 
 public class FrenchSuit extends Suit {
@@ -16,8 +19,13 @@ public class FrenchSuit extends Suit {
 		super();
 	}
 	
-	public FrenchSuit(String name) {
+	public FrenchSuit(String name) throws UnrecognizedCardException {
 		super(name);
+	}
+
+	@Override
+	public boolean validSuitName(String name) {
+		return ArrayUtils.contains(FRENCH_SUITS, name);
 	}
 	
 	/**

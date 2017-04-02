@@ -19,6 +19,7 @@ import vp_carddeck.business.FrenchDeckFactory;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoDeckException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.french.FrenchCard;
 import vp_carddeck.entities.french.FrenchDeck;
 import vp_carddeck.rest.serialization.DTOFrenchCard;
@@ -106,7 +107,7 @@ public class FrenchDeckREST {
 		try {
 			frenchDeckServices.putCardOnTop(DTOFrenchCard.convert(card));
 			return buildResponse("Card added", HTTP_SUCCESS_200);
-		} catch (NoDeckException | CardRepeatedException e) {
+		} catch (NoDeckException | CardRepeatedException | UnrecognizedCardException e) {
 			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
 		}
 	}
@@ -118,7 +119,7 @@ public class FrenchDeckREST {
 		try {
 			frenchDeckServices.putCardOnBottom(DTOFrenchCard.convert(card));
 			return buildResponse("Card added", HTTP_SUCCESS_200);
-		} catch (NoDeckException | CardRepeatedException e) {
+		} catch (NoDeckException | CardRepeatedException | UnrecognizedCardException e) {
 			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
 		}
 	}

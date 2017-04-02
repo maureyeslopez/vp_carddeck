@@ -19,6 +19,7 @@ import vp_carddeck.business.SpanishDeckFactory;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoDeckException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.spanish.SpanishCard;
 import vp_carddeck.entities.spanish.SpanishDeck;
 import vp_carddeck.rest.serialization.DTOSpanishCard;
@@ -42,7 +43,6 @@ public class SpanishDeckREST {
 
 	private Response buildResponse(Object obj, int status) {
 		return Response.status(status).entity(obj).build();
-
 	}
 
 	@POST
@@ -107,7 +107,7 @@ public class SpanishDeckREST {
 		try {
 			spanishDeckServices.putCardOnTop(DTOSpanishCard.convert(card));
 			return buildResponse("Card added", HTTP_SUCCESS_200);
-		} catch (NoDeckException | CardRepeatedException e) {
+		} catch (NoDeckException | CardRepeatedException | UnrecognizedCardException e) {
 			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
 		}
 	}
@@ -119,7 +119,7 @@ public class SpanishDeckREST {
 		try {
 			spanishDeckServices.putCardOnBottom(DTOSpanishCard.convert(card));
 			return buildResponse("Card added", HTTP_SUCCESS_200);
-		} catch (NoDeckException | CardRepeatedException e) {
+		} catch (NoDeckException | CardRepeatedException | UnrecognizedCardException e) {
 			return buildResponse(e.getLocalizedMessage(), HTTP_ERROR_400);
 		}
 	}

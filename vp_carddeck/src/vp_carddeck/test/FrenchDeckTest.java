@@ -21,11 +21,14 @@ import vp_carddeck.business.FrenchDeckFactory;
 import vp_carddeck.common.CardColor;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.ICard;
 import vp_carddeck.entities.IDeck;
 import vp_carddeck.entities.ISuit;
 import vp_carddeck.entities.french.FrenchCard;
 import vp_carddeck.entities.french.FrenchDeck;
+import vp_carddeck.entities.french.FrenchPip;
+import vp_carddeck.entities.french.FrenchSuit;
 
 /**
  * Tests for {@link FrenchDeckFactory} and {@link FrenchDeck}
@@ -121,7 +124,7 @@ public class FrenchDeckTest {
 			assertEquals(card, deck.retrieveCardOnTop());
 			assertNotEquals(card, deck.retrieveCardOnTop());
 			assertNotEquals(card, deck.retrieveCardOnBottom());
-		} catch (NoMoreCardsException | CardRepeatedException e) {
+		} catch (NoMoreCardsException | CardRepeatedException | UnrecognizedCardException e) {
 			fail(e.getLocalizedMessage());
 		}
 	}
@@ -137,7 +140,7 @@ public class FrenchDeckTest {
 			fail("Should have raised a CardRepetitionException");
 		} catch (CardRepeatedException e) {
 			// It's ok that the exception raises here
-		} catch (NoMoreCardsException e) {
+		} catch (NoMoreCardsException | UnrecognizedCardException  e) {
 			fail(e.getLocalizedMessage());
 		}
 	}
@@ -163,7 +166,7 @@ public class FrenchDeckTest {
 			// Check first 5 and last 5 cards aren't the same after a several
 			// shuffles
 			List<String> shufflesResult = new ArrayList<String>();
-			int numberOfRounds = 200000;
+			int numberOfRounds = 20;
 
 			for (int i = 0; i < numberOfRounds; i++) {
 				FrenchCard[] round = new FrenchCard[10];
@@ -193,9 +196,19 @@ public class FrenchDeckTest {
 			Set<String> resultsFolded = new HashSet<String>(shufflesResult);
 
 			assertTrue(.99 < (resultsFolded.size() / shufflesResult.size()));
-		} catch (NoMoreCardsException | CardRepeatedException e) {
+		} catch (NoMoreCardsException | CardRepeatedException | UnrecognizedCardException e) {
 			fail(e.getLocalizedMessage());
 		}
 	}
 
+	@Test
+	public void assertCreation() {	
+		try {
+			new FrenchCard(new FrenchSuit("INVALID_NAME"), new FrenchPip(9));
+			fail("It should've raised an exception");
+		} catch (UnrecognizedCardException e) {
+			// It should throw a validation exception
+		}
+	}
+	
 }

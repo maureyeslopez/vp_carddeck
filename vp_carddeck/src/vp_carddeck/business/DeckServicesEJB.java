@@ -9,6 +9,7 @@ import javax.ejb.Stateful;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoDeckException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.ICard;
 import vp_carddeck.entities.IDeck;
 
@@ -76,7 +77,7 @@ public class DeckServicesEJB implements DeckServices<ICard> {
 
 	@Override
 	@Lock(LockType.WRITE)
-	public void putCardOnTop(ICard card) throws NoDeckException, CardRepeatedException {
+	public void putCardOnTop(ICard card) throws NoDeckException, CardRepeatedException, UnrecognizedCardException {
 		if (deck != null) {
 			deck.putCardOnTop(card);
 		} else {
@@ -86,7 +87,7 @@ public class DeckServicesEJB implements DeckServices<ICard> {
 
 	@Override
 	@Lock(LockType.WRITE)
-	public void putCardOnBottom(ICard card) throws NoDeckException, CardRepeatedException {
+	public void putCardOnBottom(ICard card) throws NoDeckException, CardRepeatedException, UnrecognizedCardException {
 		if (deck != null) {
 			deck.putCardOnBottom(card);
 		} else {

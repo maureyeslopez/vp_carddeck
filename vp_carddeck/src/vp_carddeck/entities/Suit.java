@@ -1,21 +1,28 @@
 package vp_carddeck.entities;
 
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
+
 /**
- * Generic implementation of a suit
+ * Abstract implementation of a suit
  * 
  * @author maureyes
  *
  */
-public class Suit implements ISuit {
+public abstract class Suit implements ISuit {
 
 	private String name;
+	
 	public Suit() {
 		super();
 	}
 	
-	public Suit(String name) {
+	public Suit(String name) throws UnrecognizedCardException {
 		super();
-		this.name = name;
+		if(!validSuitName(name)) {
+			throw new UnrecognizedCardException("Invalid suit name");
+		} else {
+			this.name = name;
+		}
 	}
 
 	/**

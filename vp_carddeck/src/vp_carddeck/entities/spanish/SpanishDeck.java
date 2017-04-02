@@ -7,6 +7,7 @@ import java.util.List;
 import vp_carddeck.common.DeckFunctions;
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.IDeck;
 
 /**
@@ -32,17 +33,17 @@ public class SpanishDeck implements IDeck<SpanishCard> {
 	}
 
 	@Override
-	public void putCard(SpanishCard card) throws CardRepeatedException {
+	public void putCard(SpanishCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCard(card, cards);
 	}
 
 	@Override
-	public void putCardOnTop(SpanishCard card) throws CardRepeatedException {
+	public void putCardOnTop(SpanishCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCardOnTop(card, cards);
 	}
 
 	@Override
-	public void putCardOnBottom(SpanishCard card) throws CardRepeatedException {
+	public void putCardOnBottom(SpanishCard card) throws CardRepeatedException, UnrecognizedCardException {
 		deckUtils.putCardOnBottom(card, cards);
 	}
 

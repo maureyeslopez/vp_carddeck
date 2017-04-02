@@ -1,5 +1,8 @@
 package vp_carddeck.entities.spanish;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import vp_carddeck.entities.IFace;
 import vp_carddeck.entities.IPip;
 import vp_carddeck.entities.IRank;
@@ -11,6 +14,8 @@ public class SpanishPip implements IPip {
 	public static final String REY = "Rey";
 	public static final String ESPADILLA = "Espadilla";
 
+	@Min(value = 1)
+	@Max(value = 12)
 	private int number;
 
 	public SpanishPip() {

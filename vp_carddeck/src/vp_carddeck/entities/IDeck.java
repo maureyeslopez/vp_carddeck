@@ -5,6 +5,7 @@ import java.util.List;
 
 import vp_carddeck.common.exceptions.CardRepeatedException;
 import vp_carddeck.common.exceptions.NoMoreCardsException;
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 
 /**
  * Generic interface defining basic operations of a deck
@@ -25,24 +26,27 @@ public interface IDeck<T extends ICard> {
 	 * 
 	 * @param card
 	 * @throws CardRepeatedException 
+	 * @throws UnrecognizedCardException 
 	 */
-	public void putCard(T card) throws CardRepeatedException;
+	public void putCard(T card) throws CardRepeatedException, UnrecognizedCardException;
 	
 	/**
 	 * Adds card on top of the deck
 	 * 
 	 * @param card
 	 * @throws CardRepeatedException 
+	 * @throws UnrecognizedCardException 
 	 */
-	public void putCardOnTop(T card) throws CardRepeatedException;
+	public void putCardOnTop(T card) throws CardRepeatedException, UnrecognizedCardException;
 	
 	/**
 	 * Adds card on bottom of the deck
 	 * 
 	 * @param card
 	 * @throws CardRepeatedException 
+	 * @throws UnrecognizedCardException 
 	 */
-	public void putCardOnBottom(T card) throws CardRepeatedException;
+	public void putCardOnBottom(T card) throws CardRepeatedException, UnrecognizedCardException;
 	
 	/**
 	 * @return Retrieves a random card of the deck

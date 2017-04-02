@@ -1,5 +1,8 @@
 package vp_carddeck.entities.spanish;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import vp_carddeck.common.exceptions.UnrecognizedCardException;
 import vp_carddeck.entities.Suit;
 
 public class SpanishSuit extends Suit {
@@ -15,8 +18,13 @@ public class SpanishSuit extends Suit {
 		super();
 	}
 	
-	public SpanishSuit(String name) {
+	public SpanishSuit(String name) throws UnrecognizedCardException {
 		super(name);
+	}
+
+	@Override
+	public boolean validSuitName(String name) {
+		return ArrayUtils.contains(SPANISH_SUITS, name);
 	}
 
 }
