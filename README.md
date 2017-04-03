@@ -6,8 +6,7 @@
 ## REST Interfaces for testing French Deck and Spanish Deck
 
 ### API
-French Deck BASE URL: **/vp_carddeck/frenchDeck**
-
+French Deck BASE URL: **/vp_carddeck/frenchDeck**<br/>
 Spanish Deck BASE URL: **/vp_carddeck/spanishDeck**
 
 | API        | Verb           | Params  | Description        |
@@ -36,7 +35,7 @@ Spanish Deck BASE URL: **/vp_carddeck/spanishDeck**
   }
 }
 ```
-French Suit Names: Hearts, Clubs, Diamonds, Spades.
+French Suit Names: Hearts, Clubs, Diamonds, Spades.<br/>
 French Ranks: 2-10, J, Q, K, A **_Note that you should send both numbers and letters as String values in French Deck_**
   * Spanish Card
 ```json
@@ -49,7 +48,7 @@ French Ranks: 2-10, J, Q, K, A **_Note that you should send both numbers and let
   }
 }
 ```
-Spanish Suit Names: Basto, Oro, Copa, Espada.
+Spanish Suit Names: Basto, Oro, Copa, Espada.<br/>
 Spanish Ranks: 1-12
 
 #### Examples
